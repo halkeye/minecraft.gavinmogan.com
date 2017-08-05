@@ -5,3 +5,10 @@ before_script:
   - bower install
 after_script:
   - npm run build
+
+deploy:
+  skip_cleanup: true
+  provider: surge
+  project: build/es6-bundled/
+  domain: minecraft.gavinmogan.com
+  on: master
