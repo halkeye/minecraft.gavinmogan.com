@@ -12,6 +12,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-server1">
@@ -22,16 +25,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+
+      .server-icon {
+        float: left;
+        margin-right: 2em;
+      }
+
+      .server-card {
+        width: 100%;
+      }
+
+      paper-card {
+        margin-bottom: 1em;
+      }
     </style>
 
     <iron-ajax auto url="https://use.gameapis.net/mc/query/info/odin.kodekoan.com" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
 
-    <div class="card">
-      <iron-image class="circle" sizing="cover" preload fade src="https://use.gameapis.net/mc/query/icon/odin.kodekoan.com" /></iron-image>
-      <h1>minecraft.gavinmogan.com</h1>
-      <div>Version: [[ajaxResponse.version]]</div>
-      <div>Player Count: [[ajaxResponse.players.online]] / [[ajaxResponse.players.max]]</div>
-    </div>
+    <paper-card heading="minecraft.gavinmogan.com" alt="minecraft.gavinmogan.com" class="server-card">
+      <div class="card-content">
+        <iron-image class="server-icon circle" sizing="cover" preload fade src="https://use.gameapis.net/mc/query/icon/odin.kodekoan.com"
+        /></iron-image>
+        <div><b>Version:</b> [[ajaxResponse.version]]</div>
+        <div><b>Player Count:</b> [[ajaxResponse.players.online]] <b>/</b> [[ajaxResponse.players.max]]</div>
+        Simple minecraft world that myself and my friends play on.
+      </div>
+      <div class="card-actions">
+        <paper-button>Download Map</paper-button>
+      </div>
+    </paper-card>
+
+    <h1>Regulars</h1>
+
+    <paper-card heading="GavIAm">
+      <div class="card-content">
+        <iron-image preload fade src="https://use.gameapis.net/mc/images/skin/gaviam/500/false"></iron-image>
+      </div>
+    </paper-card>
+
+    <paper-card heading="Thaeus">
+      <div class="card-content">
+        <iron-image preload fade src="https://use.gameapis.net/mc/images/skin/thaeus/500/false"></iron-image>
+      </div>
+    </paper-card>
+
+    <paper-card heading="Crimlean">
+      <div class="card-content">
+        <iron-image preload fade src="https://use.gameapis.net/mc/images/skin/crimlean/500/false"></iron-image>
+      </div>
+    </paper-card>
+
   </template>
 
   <script>
