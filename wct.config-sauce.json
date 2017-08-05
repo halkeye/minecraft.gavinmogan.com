@@ -2,7 +2,7 @@
   "plugins": {
     "sauce": {
       "browsers": [{
-        "browserName": "chrome",
+        "browserName": "firefox",
         "platform": "Windows 10",
         "version": "latest"
       }]
