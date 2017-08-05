@@ -24,16 +24,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <iron-ajax auto url="https://use.gameapis.net/mc/query/info/odin.kodeokan.com" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+    <iron-ajax auto url="https://use.gameapis.net/mc/query/info/odin.kodekoan.com" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
 
     <div class="card">
-      <iron-image class="circle" sizing="cover" preload fade src="https://use.gameapis.net/mc/query/icon/odin.kodeokan.com" /></iron-image>
+      <iron-image class="circle" sizing="cover" preload fade src="https://use.gameapis.net/mc/query/icon/odin.kodekoan.com" /></iron-image>
       <h1>minecraft.gavinmogan.com</h1>
-      <div>[[ajaxResponse.version]]</div>
-      <div>[[ajaxResponse.players.online]] / [[ajaxResponse.players.max]]</div>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
-        in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <div>Version: [[ajaxResponse.version]]</div>
+      <div>Player Count: [[ajaxResponse.players.online]] / [[ajaxResponse.players.max]]</div>
     </div>
   </template>
 
