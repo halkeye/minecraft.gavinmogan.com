@@ -1,0 +1,110 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-server1">
+  <template>
+    <style include="shared-styles">
+       :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .server-icon {
+        float: left;
+        margin-right: 2em;
+      }
+
+      .server-card {
+        width: 100%;
+      }
+
+      paper-card {
+        margin-bottom: 1em;
+      }
+      .card-actions a,
+      a paper-button,
+      a:active paper-button,
+      a:visited paper-button {
+        text-decoration: none;
+        color: #000;
+      }
+    </style>
+
+    <iron-ajax auto url="https://use.gameapis.net/mc/query/info/odin.kodekoan.com" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
+
+    <paper-card heading="minecraft.gavinmogan.com" alt="minecraft.gavinmogan.com" class="server-card">
+      <div class="card-content">
+        <iron-image class="server-icon circle" sizing="cover" preload fade src="https://use.gameapis.net/mc/query/icon/odin.kodekoan.com"
+        /></iron-image>
+        <div><b>Version:</b> [[ajaxResponse.version]]</div>
+        <div><b>Player Count:</b> [[ajaxResponse.players.online]] <b>/</b> [[ajaxResponse.players.max]]</div>
+        Simple minecraft world that myself and my friends play on.
+      </div>
+      <paper-dialog id="dialog">
+        <paper-dialog-scrollable>
+          <iron-image src="https://minecraft-gavinmogan.s3.amazonaws.com/map.png" />
+        </paper-dialog-scrollable>
+        <div class="buttons">
+          <paper-button dialog-confirm autofocus>Done</paper-button>
+        </div>
+      </paper-dialog>
+      <div class="card-actions">
+        <a href="https://minecraft-gavinmogan.s3.amazonaws.com/map.zip" download tabindex="-1"><paper-button raised>Download Map</paper-button></a>
+        <a href="https://minecraft-gavinmogan.s3.amazonaws.com/map.png" download tabindex="-1"><paper-button raised>Download Render of Map</paper-button></a>
+        <paper-button raised on-tap="openDialog">View Render of Map</paper-button>
+      </div>
+    </paper-card>
+
+    <h1>Regulars</h1>
+
+    <paper-card heading="GavIAm">
+      <div class="card-content">
+        <iron-image preload fade src="https://use.gameapis.net/mc/images/skin/gaviam/500/true"></iron-image>
+      </div>
+    </paper-card>
+
+    <paper-card heading="Thaeus">
+      <div class="card-content">
+        <iron-image preload fade src="https://use.gameapis.net/mc/images/skin/thaeus/500/true"></iron-image>
+      </div>
+    </paper-card>
+
+    <paper-card heading="Crimlean">
+      <div class="card-content">
+        <iron-image preload fade src="https://use.gameapis.net/mc/images/skin/crimlean/500/true"></iron-image>
+      </div>
+    </paper-card>
+
+  </template>
+
+  <script>
+    class MyServer1 extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'my-server1'; }
+      openDialog() {
+        this.$.dialog.open();
+      }
+    }
+
+    window.customElements.define(MyServer1.is, MyServer1);
+  </script>
+</dom-module>

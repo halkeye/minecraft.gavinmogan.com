@@ -1,0 +1,11 @@
+{
+  "plugins": {
+    "sauce": {
+      "browsers": [{
+        "browserName": "firefox",
+        "platform": "Windows 10",
+        "version": "latest"
+      }]
+    }
+  }
+}
