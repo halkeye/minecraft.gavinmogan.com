@@ -14,6 +14,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+
 
 <link rel="import" href="shared-styles.html">
 
@@ -38,6 +41,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       paper-card {
         margin-bottom: 1em;
       }
+      .card-actions a,
+      a paper-button,
+      a:active paper-button,
+      a:visited paper-button {
+        text-decoration: none;
+        color: #000;
+      }
     </style>
 
     <iron-ajax auto url="https://use.gameapis.net/mc/query/info/odin.kodekoan.com" handle-as="json" last-response="{{ajaxResponse}}"></iron-ajax>
@@ -50,8 +60,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div><b>Player Count:</b> [[ajaxResponse.players.online]] <b>/</b> [[ajaxResponse.players.max]]</div>
         Simple minecraft world that myself and my friends play on.
       </div>
+      <paper-dialog id="dialog">
+        <paper-dialog-scrollable>
+          <iron-image src="http://minecraft-gavinmogan.s3.amazonaws.com/map.png" />
+        </paper-dialog-scrollable>
+        <div class="buttons">
+          <paper-button dialog-confirm autofocus>Done</paper-button>
+        </div>
+      </paper-dialog>
       <div class="card-actions">
-        <paper-button>Download Map</paper-button>
+        <a href="http://minecraft-gavinmogan.s3.amazonaws.com/map.zip" download tabindex="-1"><paper-button raised>Download Map</paper-button></a>
+        <paper-button raised on-tap="openDialog">View Map</paper-button>
       </div>
     </paper-card>
 
@@ -78,8 +97,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class MyServer1 extends Polymer.Element {
+    class MyServer1 extends Polymer.GestureEventListeners(Polymer.Element) {
       static get is() { return 'my-server1'; }
+      openDialog() {
+        this.$.dialog.open();
+      }
     }
 
     window.customElements.define(MyServer1.is, MyServer1);
