@@ -26,5 +26,17 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        
+        stage('Deploy') {
+            when {
+                branch 'master'
+            }
+            environment { 
+                SURGE = credentials('halkeye-surge') 
+            }
+            steps {
+                sh 'SURGE_LOGIN=$SURGE_USR SURGE_TOKEN=$SURGE_PSW npx surge -p build/es6-bundled -d minecraft.gavinmogan.com'
+            }
+        }
     }
 }
