@@ -1,10 +1,11 @@
 properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/halkeye/minecraft.gavinmogan.com/']])
 
 pipeline {
-    agent {
-        node { 
-            label ''
-        }
+    agent any
+
+    options {
+        timeout(time: 10, unit: 'MINUTES')
+        ansiColor('xterm')
     }
     stages {
         stage('Install') {
