@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh 'bower install'
+                sh 'npx bower install'
             }
         }
         stage('Test') {
