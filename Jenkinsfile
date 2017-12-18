@@ -15,9 +15,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm run test'
+                sauce('sauce_minecraft_gavinmogan') {
+                    sauceconnect(options: '', sauceConnectPath: '') {
+                        sh 'npm run test'
+                    }
+                }
             }
         }
+        
         stage('Build') {
             steps {
                 sh 'npm run build'
