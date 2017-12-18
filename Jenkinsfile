@@ -2,7 +2,7 @@ properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'h
 
 pipeline {
     agent {
-        node { 
+        node: { 
             label: 'node'
         }
     }
