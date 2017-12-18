@@ -2,7 +2,9 @@ properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'h
 
 pipeline {
     agent {
-        docker { image 'node:7-alpine' }
+        node { 
+            label: 'node'
+        }
     }
     stages {
         stage('Install') {
