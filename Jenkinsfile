@@ -2,11 +2,9 @@ properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'h
 
 pipeline {
     agent {
-        /*
         node { 
-            label 'node'
+            label ''
         }
-        */
     }
     stages {
         stage('Install') {
