@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:9'
+        }
+    }
 
     options {
         timeout(time: 10, unit: 'MINUTES')
