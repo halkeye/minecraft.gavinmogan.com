@@ -1,5 +1,3 @@
-properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/halkeye/minecraft.gavinmogan.com/']])
-
 pipeline {
     agent any
 
